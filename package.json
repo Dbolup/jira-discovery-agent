@@ -1,0 +1,28 @@
+{
+  "name": "jira-discovery-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RAG agent for Jira Cloud-to-Cloud migration discovery questions, powered by Claude.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "ingest": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/ingest-pdfs.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
+    "next": "^14.2.35",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "pdf-parse": "^1.1.1",
+    "typescript": "^5.5.3"
+  }
+}

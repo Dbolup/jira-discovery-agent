@@ -1,0 +1,32 @@
+{
+  "generatedAt": "seed",
+  "note": "Jira-only deployment. Replace this file by running `npm run ingest` against your Jira PDFs in ./pdfs. The seed entries below let the app run before ingestion.",
+  "documents": [
+    {
+      "title": "Jira Cloud-to-Cloud Migration Discovery",
+      "product": "Jira",
+      "qa": [
+        {
+          "question": "What is a Jira Cloud-to-Cloud migration?",
+          "answer": "It is the process of moving data (projects, issues, users, configurations, attachments) from one Atlassian Cloud Jira site to another. It is typically driven by company mergers, acquisitions, divestitures, or consolidation of multiple Cloud instances into one."
+        },
+        {
+          "question": "Which Jira data can be migrated between Cloud sites?",
+          "answer": "Projects, issues and their full history, comments, attachments, workflows, screens, fields (including most custom fields), users and groups, and project roles. Some app (Marketplace) data and certain advanced configurations may require app-specific migration paths or manual recreation."
+        },
+        {
+          "question": "What tools are used for Jira Cloud-to-Cloud migration?",
+          "answer": "Atlassian's Cloud-to-Cloud migration tooling (where available), the Jira CSV importer for issue-level moves, REST API based scripts for selective data, and Marketplace migration apps for complex or app-specific data."
+        },
+        {
+          "question": "How are users and groups handled during a Cloud-to-Cloud migration?",
+          "answer": "User identities are keyed by email address. Discovery must confirm whether the destination site uses the same identity provider, whether accounts already exist, and how group membership and permission schemes map between the source and destination."
+        },
+        {
+          "question": "What are common discovery questions before a Jira migration?",
+          "answer": "How many projects and issues exist? What custom fields and apps are in use? Are there cross-project dependencies? What is the user count and identity setup? What is the acceptable downtime window? Are there compliance or data-residency requirements?"
+        }
+      ]
+    }
+  ]
+}

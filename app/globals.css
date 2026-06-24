@@ -1,0 +1,306 @@
+:root {
+  /* Atlassian palette */
+  --atl-blue: #0052cc;
+  --atl-blue-bold: #0747a6;
+  --atl-blue-light: #0065ff;
+  --atl-blue-subtle: #4c9aff;
+  --atl-blue-bg: #deebff;
+  --atl-navy: #172b4d;
+  --atl-text: #172b4d;
+  --atl-text-subtle: #5e6c84;
+  --atl-bg: #f4f5f7;
+  --atl-surface: #ffffff;
+  --atl-border: #dfe1e6;
+  --atl-border-subtle: #ebecf0;
+  --atl-green: #36b37e;
+
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(9, 30, 66, 0.12), 0 0 1px rgba(9, 30, 66, 0.16);
+  --shadow-lg: 0 8px 24px rgba(9, 30, 66, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, "Helvetica Neue", sans-serif;
+  color: var(--atl-text);
+  background: var(--atl-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Layout shell ---------- */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-width: 880px;
+  margin: 0 auto;
+  background: var(--atl-surface);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ---------- Header ---------- */
+.header {
+  background: linear-gradient(135deg, var(--atl-blue-bold) 0%, var(--atl-blue) 50%, var(--atl-blue-light) 100%);
+  color: #fff;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.18);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.logo svg {
+  width: 24px;
+  height: 24px;
+}
+
+.header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.header p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* ---------- Messages ---------- */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.empty {
+  margin: auto;
+  text-align: center;
+  max-width: 480px;
+  color: var(--atl-text-subtle);
+}
+
+.empty h2 {
+  color: var(--atl-text);
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.chip {
+  background: var(--atl-blue-bg);
+  color: var(--atl-blue-bold);
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chip:hover {
+  background: #fff;
+  border-color: var(--atl-blue-subtle);
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.row.user {
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.avatar.bot {
+  background: var(--atl-blue);
+}
+
+.avatar.user {
+  background: var(--atl-navy);
+}
+
+.bubble {
+  max-width: 78%;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.row.user .bubble {
+  background: var(--atl-blue);
+  color: #fff;
+  border-top-right-radius: 2px;
+}
+
+.row.bot .bubble {
+  background: var(--atl-border-subtle);
+  color: var(--atl-text);
+  border-top-left-radius: 2px;
+}
+
+/* Markdown inside assistant bubbles */
+.bubble p {
+  margin: 0 0 10px;
+}
+.bubble p:last-child {
+  margin-bottom: 0;
+}
+.bubble ul,
+.bubble ol {
+  margin: 6px 0 10px;
+  padding-left: 20px;
+}
+.bubble li {
+  margin: 3px 0;
+}
+.bubble code {
+  background: rgba(9, 30, 66, 0.08);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.bubble em {
+  color: var(--atl-text-subtle);
+}
+.bubble a {
+  color: var(--atl-blue);
+}
+
+.cursor::after {
+  content: "▋";
+  display: inline-block;
+  margin-left: 1px;
+  animation: blink 1s steps(2) infinite;
+  color: var(--atl-blue-subtle);
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---------- Composer ---------- */
+.composer {
+  border-top: 1px solid var(--atl-border);
+  padding: 14px 16px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  background: var(--atl-surface);
+  flex-shrink: 0;
+}
+
+.composer textarea {
+  flex: 1;
+  resize: none;
+  border: 2px solid var(--atl-border);
+  border-radius: var(--radius);
+  padding: 11px 14px;
+  font-size: 14.5px;
+  font-family: inherit;
+  color: var(--atl-text);
+  max-height: 160px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.composer textarea:focus {
+  border-color: var(--atl-blue);
+}
+
+.send {
+  background: var(--atl-blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.send:hover:not(:disabled) {
+  background: var(--atl-blue-bold);
+}
+
+.send:disabled {
+  background: var(--atl-border);
+  cursor: not-allowed;
+}
+
+.send svg {
+  width: 20px;
+  height: 20px;
+}
+
+.footnote {
+  text-align: center;
+  font-size: 11px;
+  color: var(--atl-text-subtle);
+  padding: 0 16px 10px;
+  flex-shrink: 0;
+}
+
+.banner {
+  background: #fffae6;
+  color: #974f0c;
+  font-size: 13px;
+  padding: 8px 16px;
+  text-align: center;
+  border-bottom: 1px solid #ffe7a0;
+}
